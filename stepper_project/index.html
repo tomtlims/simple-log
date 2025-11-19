@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>3-step Stepper</title>
+<style>
+  :root{
+    --size: 56px;
+    --line-height: 6px;
+    --accent: #20a03b;
+    --muted: #dcdcdc;
+    --circle-bg: #333333;
+    --inactive-circle-bg: #efefef;
+    --text-color: white;
+    --gap: 32px;
+  }
+  body{
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: #fff;
+  }
+  .stepper {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    padding: 24px;
+    max-width: 900px;
+    width: 90%;
+  }
+  .step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: calc(var(--size));
+    flex: 0 0 auto;
+  }
+  .circle {
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    color: var(--text-color);
+    background: var(--inactive-circle-bg);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    z-index: 2;
+    transition: transform .25s ease, background .25s ease, color .25s ease;
+    font-size: 18px;
+  }
+  .step::before, .step::after{
+    content: "";
+    position: absolute;
+    top: calc(var(--size) / 2 - var(--line-height) / 2);
+    height: var(--line-height);
+    width: calc( (var(--gap) + var(--size) ) / 2 );
+    background: var(--muted);
+    z-index: 1;
+    transition: background .25s ease;
+  }
+  .step::before{
+    left: calc( -1 * ( (var(--gap) + var(--size)) / 2 ) );
+  }
+  .step::after{
+    right: calc( -1 * ( (var(--gap) + var(--size)) / 2 ) );
+  }
+  .step:first-child::before{ display: none; }
+  .step:last-child::after{ display: none; }
+  .step.completed .circle{
+    background: var(--circle-bg);
+    color: var(--text-color);
+    transform: scale(1.02);
+  }
+  .step.completed::after{ background: var(--accent); }
+  .step.completed + .step::before{ background: var(--accent); }
+  .step.active .circle{
+    background: radial-gradient(circle at 30% 30%, #4a4a4a 0%, var(--circle-bg) 100%);
+    transform: scale(1.06);
+    box-shadow: 0 6px 20px rgba(32, 160, 59, 0.12);
+  }
+  .step.pending .circle{
+    background: var(--inactive-circle-bg);
+    color: #777;
+  }
+  .label{
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    width: 100px;
+  }
+  .controls{
+    margin-top: 26px;
+    display:flex;
+    gap: 8px;
+    justify-content:center;
+  }
+  button{
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+  }
+  button:active{ transform: translateY(1px); }
+  @media (max-width:520px){
+    :root{ --size:48px; --gap: 20px; }
+    .label{ width: 70px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div style="width:100%; display:flex; flex-direction:column; align-items:center;">
+  <nav class="stepper" aria-label="Progress">
+    <div class="step" data-step="1" role="listitem" aria-current="false">
+      <div class="circle">1</div>
+      <div class="label">Step 1</div>
+    </div>
+    <div class="step" data-step="2" role="listitem" aria-current="false">
+      <div class="circle">2</div>
+      <div class="label">Step 2</div>
+    </div>
+    <div class="step" data-step="3" role="listitem" aria-current="false">
+      <div class="circle">3</div>
+      <div class="label">Step 3</div>
+    </div>
+  </nav>
+  <div class="controls" aria-hidden="false">
+    <button id="prevBtn">Prev</button>
+    <button id="nextBtn">Next</button>
+    <button id="resetBtn">Reset</button>
+  </div>
+</div>
+<script>
+  const steps = Array.from(document.querySelectorAll('.step'));
+  let current = 2;
+  function setStep(n){
+    if (n < 1) n = 1;
+    if (n > steps.length) n = steps.length;
+    current = n;
+    steps.forEach((el, idx) => {
+      const stepNum = idx + 1;
+      el.classList.remove('completed','active','pending');
+      el.setAttribute('aria-current','false');
+      if (stepNum < current){
+        el.classList.add('completed');
+      } else if (stepNum === current){
+        el.classList.add('active');
+        el.setAttribute('aria-current','step');
+      } else {
+        el.classList.add('pending');
+      }
+    });
+  }
+  setStep(current);
+  document.getElementById('prevBtn').addEventListener('click', () => setStep(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => setStep(current + 1));
+  document.getElementById('resetBtn').addEventListener('click', () => setStep(1));
+  window.setStepper = setStep;
+</script>
+</body>
+</html>

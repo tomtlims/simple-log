@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TLIMS MERCANTILE - Premium Clothing</title>
+    <title>Collections</title>
    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
@@ -11,7 +11,6 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">TLIMS <span>MERCANTILE</span></a>
-            
             <div class="search-container">
   <input type="search" id="search-input" placeholder="Search products...">
   <button id="search-button">Search</button>
@@ -20,17 +19,18 @@
 
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="allproducts.html">Collections</a></li>                
+                    <li><a href="index">Home</a></li>
+                    <li><a href="#">Collections</a></li>                
                     <li><a href="about.html">About</a></li>
                     <li><a href="login.html">Profile</a></li>
                 </ul>
             </nav>
           
             <div class="cart-icon">
+                
                 <svg width="24" height="24">
-  <image href="cart.png" width="24" height="24"/>
-</svg>
+                  <image href="cart.png" width="24" height="24"/>
+                </svg>
 
                 <span class="cart-count">0</span>
             </div>
@@ -41,15 +41,14 @@
     <section class="hero">
         <div class="container hero-content">
             <h1>Elevate Your Style</h1>
-            <p>Discover premium quality clothing that combines comfort, style, and sustainability</p>
-            <a href="allproducts.html" class="btn">Shop Now</a>
+            <p>Discover premium quality clothing that combines comfort, style, and sustainability<br>And many more Accessories.</p>           
         </div>
     </section>
 
     <!-- Featured Products -->
     <section class="featured">
         <div class="container">
-            <h2 class="section-title">Featured Products</h2>
+            <h2 class="section-title">Clothings</h2>
             <div class="products">
                 <!-- Product 1 -->
                 <div class="product-card">
@@ -70,8 +69,8 @@
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Long Sleeve Shirt</h3>
-                        <p class="product-price">90.99ZMW</p>
-                        <button class="add-to-cart" data-id="2" data-name="Long Sleeve shirt" data-price="90.99" data-image="long sleeved.jpeg">Add to Cart</button>
+                        <p class="product-price">59.99ZMW</p>
+                        <button class="add-to-cart" data-id="2" data-name="Long Sleeve shirt" data-price="59.99" data-image="long sleeved.jpeg">Add to Cart</button>
                     </div>
                 </div>
                 
@@ -97,21 +96,65 @@
                         <p class="product-price">200ZMW</p>
                         <button class="add-to-cart" data-id="4" data-name="Savage Black-Tshirt" data-price="200ZMW" data-image="savage black">Add to Cart</button>
                     </div>
-                </div>     
-                <!-- Product 5 -->
+                </div>
+            </div>
+        </div>
+
+        
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Office Gadgets</h2>
+            <div class="products">
+                <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="chicagobulls-xl.jpg" alt="Chicago Bulls- XL">
+                        <img src="bluetooth headsets.jpeg" alt="Bluetooth Headsets">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Chicago Bulls- XL</h3>
+                        <h3 class="product-title">Bluetooth Headsets</h3>
+                        <p class="product-price">280ZMW</p>
+                        <button class="add-to-cart" data-id="1" data-name="Bluetooth Headsets" data-price="280" data-image="bluetooth headsets.jpeg">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Apple-iPhone-17-Pro-01-768x461.jpg" alt="Apple-iPhone-17-Pro">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Apple-iPhone-17-Pro</h3>
+                        <p class="product-price">50,000.99</p>
+                        <button class="add-to-cart" data-id="2" data-name="Apple-iPhone-17-Pro" data-price="50000.99" data-image="Apple-iPhone-17-Pro-01-768x461.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="office combo gadget.png" alt="Office Combo Gadget">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Office Combo Gadget</h3>
+                        <p class="product-price">4089.99</p>
+                        <button class="add-to-cart" data-id="3" data-name="Office Combo Gadget" data-price="4089.99" data-image="office combo gadget.png">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="savage black.jpeg" alt="Savage Black-Tshirt ">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Savage Black-Tshirt</h3>
                         <p class="product-price">200ZMW</p>
-                        <button class="add-to-cart" data-id="4" data-name="Chicago Bulls- XL" data-price="200ZMW" data-image="chicagobulls-xl">Add to Cart</button>
+                        <button class="add-to-cart" data-id="4" data-name="Savage Black-Tshirt" data-price="200" data-image="savage black">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
     <!-- Footer -->
     <footer>
@@ -124,7 +167,7 @@
                 <div class="footer-column">
                     <h3>Shop</h3>
                     <ul>
-                        <li><a href="allproducts.html">All Products</a></li>
+                        <li><a href="#">All Products</a></li>
                         <li><a href="#">New Arrivals</a></li>
                         <li><a href="#">Best Sellers</a></li>
                         <li><a href="#">Special Offers</a></li>
@@ -140,8 +183,8 @@
                 <div class="footer-column">
                     <h3>Connect</h3>
                     <ul>
-                        <li><a href="#">Instagram</li>
-                        <li><a href="#">Facebook</li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
                     </ul>
                 </div>
             </div>
@@ -161,12 +204,13 @@
             <!-- Cart items will be added here dynamically -->
         </div>
         <div class="cart-total">
-            Total: K<span class="total-amount">0.00</span>
+            Total: $<span class="total-amount">0.00</span>
         </div>
         
-        <a href="checkout.html" class="btn">Proceed to Checkout</a>
+        <button id="checkout-button">Proceed to Checkout</botton>
     </div>
     <div class="overlay"></div>
     <script src="script.js"></script>
 </body>
 </html>             
+    </section>

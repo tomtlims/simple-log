@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete payment</title>
+   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body class="payment">
+  <div class="tabcontainer">
+    <h1 class="h1">Choose Payment Method</h1>
+
+    <div class="tabs">
+      <div class="tab active" data-target="airtel">Airtel Money</div>
+      <div class="tab" data-target="mtn">MTN Mobile Money</div>
+      <div class="tab" data-target="card">Credit Card</div>
+    </div>
+
+    <!-- Airtel Money -->
+    <div id="airtel" class="form-section active">
+      <label for="airtel-number">Airtel Phone Number</label>
+      <input type="tel" id="airtel-number" placeholder="e.g. 097XXXXXXX">
+      <button class="butn" onclick="processPayment('Airtel Money')">Pay with Airtel</button>
+    </div>
+
+    <!-- MTN Mobile Money -->
+    <div id="mtn" class="form-section">
+      <label for="mtn-number">MTN Phone Number</label>
+      <input type="tel" id="mtn-number" placeholder="e.g. 096XXXXXXX">
+      <button class="butn" onclick="processPayment('MTN Mobile Money')">Pay with MTN</button>
+    </div>
+
+    <!-- Credit Card -->
+    <div id="card" class="form-section">
+      <label for="card-number">Card Number</label>
+      <input type="text" id="card-number" maxlength="16" placeholder="1234 5678 9012 3456">
+
+      <label for="expiry">Expiry Date</label>
+      <input type="text" id="expiry" placeholder="MM/YY">
+
+      <label for="cvv">CVV</label>
+      <input type="password" id="cvv" maxlength="4" placeholder="123">
+
+      <button class="butn" onclick="processPayment('Credit Card')">Pay with Card</button>
+    </div>
+  </div>
+  <script>
+  // Tab switching
+    const tabs = document.querySelectorAll(".tab");
+    const sections = document.querySelectorAll(".form-section");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        sections.forEach(s => s.classList.remove("active"));
+
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.target).classList.add("active");
+      });
+    });
+
+    // payment processing
+    function processPayment(method) {
+      alert("Payment processed successfully with " + method + "");
+    };
+   
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

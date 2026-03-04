@@ -10,151 +10,400 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">TLIMS <span>MERCANTILE</span></a>
-            <div class="search-container">
-  <input type="search" id="search-input" placeholder="Search products...">
-  <button id="search-button">Search</button>
-  <ul id="search-results"></ul>
-</div>
+            <a href="index.html" class="logo">TLIMS <span>MERCANTILE</span></a>
 
-            <nav>
+            <nav class="main-nav" aria-label="Main Navigation">
                 <ul>
-                    <li><a href="index">Home</a></li>
-                    <li><a href="#">Collections</a></li>                
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="allproducts.html">Collections</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="shipping and returns.html">Shipping</a></li>
                     <li><a href="login.html">Profile</a></li>
                 </ul>
             </nav>
-          
-            <div class="cart-icon">
-                
-                <svg width="24" height="24">
-                  <image href="cart.png" width="24" height="24"/>
-                </svg>
 
-                <span class="cart-count">0</span>
+
+                <button class="cart-icon" aria-label="Open cart">
+                    <svg width="24" height="24">
+                      <image href="images/cart.png" width="20" height="20"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="Toggle menu" onclick="myFunction()">
+                    <span class="hamburger">☰</span>
+                </button>
             </div>
+        </div>
+
+        <div id="myLinks" class="mobile-nav" aria-hidden="true">
+            <a href="index.html">Home</a>
+            <a href="allproducts.html">Collections</a>
+            <a href="about.html">About</a>
+            <a href="shipping and returns.html">Shipping & Returns</a>
+            <a href="login.html">Profile</a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>Elevate Your Style</h1>
-            <p>Discover premium quality clothing that combines comfort, style, and sustainability<br>And many more Accessories.</p>           
+            <h1>Boost Your Vibe</h1>
+            <p>Discover premium quality clothing that combines comfort, style, and sustainability<br>On the Universe of Products.
+            <br>A world of choices,Your Digital Department Store</p>           
         </div>
     </section>
 
     <!-- Featured Products -->
     <section class="featured">
         <div class="container">
-            <h2 class="section-title">Clothings</h2>
+            <h2 class="section-title">T-Shirts & Tops</h2>
             <div class="products">
-                <!-- Product 1 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="t-shirt.jpeg" alt="Classic White Tee">
-                    </div>
+                    <div class="product-image"><img src="images/t-shirt.jpeg" alt="Classic White Tee"></div>
                     <div class="product-info">
-                        <h3 class="product-title">Classic White Tee</h3>
-                        <p class="product-price">180ZMW</p>
-                        <button class="add-to-cart" data-id="1" data-name="Classic White Tee" data-price="180" data-image="t-shirt">Add to Cart</button>
+                        <h3 class="product-title">Classic White Tee-M</h3>
+                        <p class="product-price">K180</p>
+                        <button class="add-to-cart" data-id="1" data-name="Classic White Tee" data-price="180" data-image="t-shirt.jpeg">Add to Cart</button>
                     </div>
                 </div>
-                
-                <!-- Product 2 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="long sleeved.jpeg" alt="Long Sleeve Shirt">
-                    </div>
+                    <div class="product-image"><img src="images/long sleeved.jpeg" alt="Long Sleeve Shirt"></div>
                     <div class="product-info">
-                        <h3 class="product-title">Long Sleeve Shirt</h3>
-                        <p class="product-price">59.99ZMW</p>
-                        <button class="add-to-cart" data-id="2" data-name="Long Sleeve shirt" data-price="59.99" data-image="long sleeved.jpeg">Add to Cart</button>
+                        <h3 class="product-title">Long Sleeve Shirt-M</h3>
+                        <p class="product-price">K200</p>
+                        <button class="add-to-cart" data-id="2" data-name="Long Sleeve Shirt" data-price="200" data-image="long sleeved.jpeg">Add to Cart</button>
                     </div>
                 </div>
-                
-                <!-- Product 3 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="office combo gadget.png" alt="Office Combo Gadget">
-                    </div>
+                    <div class="product-image"><img src="images/savage black.jpeg" alt="Savage Black T-Shirt"></div>
                     <div class="product-info">
-                        <h3 class="product-title">Office Combo Gadget</h3>
-                        <p class="product-price">4089.99ZMW</p>
-                        <button class="add-to-cart" data-id="3" data-name="Office Combo Gadget" data-price="4089.99" data-image="office combo gadget.png">Add to Cart</button>
+                        <h3 class="product-title">Savage Black T-Shirt-L</h3>
+                        <p class="product-price">K190</p>
+                        <button class="add-to-cart" data-id="3" data-name="Savage Black T-Shirt" data-price="190" data-image="savage black.jpeg">Add to Cart</button>
                     </div>
                 </div>
-                
-                <!-- Product 4 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="savage black.jpeg" alt="Savage Black-Tshirt ">
-                    </div>
+                    <div class="product-image"><img src="images/tops.jpg" alt="Casual Tops"></div>
                     <div class="product-info">
-                        <h3 class="product-title">Savage Black-Tshirt</h3>
-                        <p class="product-price">200ZMW</p>
-                        <button class="add-to-cart" data-id="4" data-name="Savage Black-Tshirt" data-price="200ZMW" data-image="savage black">Add to Cart</button>
+                        <h3 class="product-title">Casual Tops-XL</h3>
+                        <p class="product-price">K170</p>
+                        <button class="add-to-cart" data-id="4" data-name="Casual Tops" data-price="170" data-image="tops.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/oversized orugin man print tshirt.jpeg" alt="Oversized Print T-Shirt"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Oversized Print T-Shirt-XL</h3>
+                        <p class="product-price">K210</p>
+                        <button class="add-to-cart" data-id="5" data-name="Oversized Print T-Shirt" data-price="210" data-image="oversized orugin man print tshirt.jpeg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/adidas shirt.jpg" alt="Adidas Shirt"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Adidas Shirt</h3>
+                        <p class="product-price">K220</p>
+                        <button class="add-to-cart" data-id="6" data-name="Adidas Shirt" data-price="220" data-image="adidas shirt.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/apeshirt.jpg" alt="Ape Graphic Shirt"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ape Graphic Shirt-XL</h3>
+                        <p class="product-price">K240</p>
+                        <button class="add-to-cart" data-id="7" data-name="Ape Graphic Shirt" data-price="240" data-image="apeshirt.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/crop top.jpg" alt="Crop Top"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Crop Top</h3>
+                        <p class="product-price">K150</p>
+                        <button class="add-to-cart" data-id="8" data-name="Crop Top" data-price="150" data-image="crop top.jpg">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        
-    <!-- Featured Products -->
+    <!-- Shoes & Sneakers -->
     <section class="featured">
         <div class="container">
-            <h2 class="section-title">Office Gadgets</h2>
+            <h2 class="section-title">Shoes & Sneakers</h2>
             <div class="products">
-                <!-- Product 1 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="bluetooth headsets.jpeg" alt="Bluetooth Headsets">
-                    </div>
+                    <div class="product-image"><img src="images/shoe.jpg" alt="Classic Shoe"></div>
                     <div class="product-info">
-                        <h3 class="product-title">Bluetooth Headsets</h3>
-                        <p class="product-price">280ZMW</p>
-                        <button class="add-to-cart" data-id="1" data-name="Bluetooth Headsets" data-price="280" data-image="bluetooth headsets.jpeg">Add to Cart</button>
+                        <h3 class="product-title">Classic Shoe-41</h3>
+                        <p class="product-price">K250</p>
+                        <button class="add-to-cart" data-id="9" data-name="Classic Shoe" data-price="250" data-image="shoe.jpg">Add to Cart</button>
                     </div>
                 </div>
-                
-                <!-- Product 2 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="Apple-iPhone-17-Pro-01-768x461.jpg" alt="Apple-iPhone-17-Pro">
-                    </div>
+                    <div class="product-image"><img src="images/Jordan 1.jpg" alt="Jordan 1"></div>
                     <div class="product-info">
-                        <h3 class="product-title">Apple-iPhone-17-Pro</h3>
-                        <p class="product-price">50,000.99</p>
-                        <button class="add-to-cart" data-id="2" data-name="Apple-iPhone-17-Pro" data-price="50000.99" data-image="Apple-iPhone-17-Pro-01-768x461.jpg">Add to Cart</button>
+                        <h3 class="product-title">Jordan 1-41</h3>
+                        <p class="product-price">K280</p>
+                        <button class="add-to-cart" data-id="10" data-name="Jordan 1" data-price="280" data-image="Jordan 1.jpg">Add to Cart</button>
                     </div>
                 </div>
-                
-                <!-- Product 3 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="office combo gadget.png" alt="Office Combo Gadget">
-                    </div>
+                    <div class="product-image"><img src="images/cut Jordan.jpg" alt="Cut Jordan"></div>
                     <div class="product-info">
-                        <h3 class="product-title">Office Combo Gadget</h3>
-                        <p class="product-price">4089.99</p>
-                        <button class="add-to-cart" data-id="3" data-name="Office Combo Gadget" data-price="4089.99" data-image="office combo gadget.png">Add to Cart</button>
+                        <h3 class="product-title">Cut Jordans-43</h3>
+                        <p class="product-price">K270</p>
+                        <button class="add-to-cart" data-id="11" data-name="Cut Jordan" data-price="270" data-image="cut Jordan.jpg">Add to Cart</button>
                     </div>
                 </div>
-                
-                <!-- Product 4 -->
                 <div class="product-card">
-                    <div class="product-image">
-                        <img src="savage black.jpeg" alt="Savage Black-Tshirt ">
-                    </div>
+                    <div class="product-image"><img src="images/af1.jpg" alt="Air Force 1"></div>
                     <div class="product-info">
-                        <h3 class="product-title">Savage Black-Tshirt</h3>
-                        <p class="product-price">200ZMW</p>
-                        <button class="add-to-cart" data-id="4" data-name="Savage Black-Tshirt" data-price="200" data-image="savage black">Add to Cart</button>
+                        <h3 class="product-title">Air Force 1-42</h3>
+                        <p class="product-price">K260</p>
+                        <button class="add-to-cart" data-id="12" data-name="Air Force 1" data-price="260" data-image="af1.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/air force black.jpg" alt="Air Force Black"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Air Force Black-41</h3>
+                        <p class="product-price">K265</p>
+                        <button class="add-to-cart" data-id="13" data-name="Air Force Black" data-price="265" data-image="air force black.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/vans.jpg" alt="Vans Sneaker"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Vans Sneaker-41</h3>
+                        <p class="product-price">K240</p>
+                        <button class="add-to-cart" data-id="14" data-name="Vans Sneaker" data-price="240" data-image="vans.jpg">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Sports Jerseys -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Sports Jerseys</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image"><img src="images/chicagobulls-xl.jpg" alt="Chicago Bulls XL"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Chicago Bulls-XL</h3>
+                        <p class="product-price">K230</p>
+                        <button class="add-to-cart" data-id="15" data-name="Chicago Bulls XL" data-price="230" data-image="chicagobulls-xl.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/blacklakers-xl.jpg" alt="Black Lakers XL"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Black Lakers-XL</h3>
+                        <p class="product-price">K225</p>
+                        <button class="add-to-cart" data-id="16" data-name="Black Lakers XL" data-price="225" data-image="blacklakers-xl.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/bluelakers-l.jpg" alt="Blue Lakers L"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Blue Lakers-L</h3>
+                        <p class="product-price">K220</p>
+                        <button class="add-to-cart" data-id="17" data-name="Blue Lakers L" data-price="220" data-image="bluelakers-l.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/bluedodgers-l.jpg" alt="Blue Dodgers L"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Blue Dodgers-L</h3>
+                        <p class="product-price">K215</p>
+                        <button class="add-to-cart" data-id="18" data-name="Blue Dodgers L" data-price="215" data-image="bluedodgers-l.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/beachdodgers-l.jpg" alt="Beach Dodgers L"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Beach Dodgers-L</h3>
+                        <p class="product-price">K220</p>
+                        <button class="add-to-cart" data-id="19" data-name="Beach Dodgers L" data-price="220" data-image="beachdodgers-l.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/redindians-m.jpg" alt="Red Indians M"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Red IndiansM</h3>
+                        <p class="product-price">K210</p>
+                        <button class="add-to-cart" data-id="20" data-name="Red Indians M" data-price="210" data-image="redindians-m.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/whiteredsox-m.jpg" alt="White Red Sox M"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">White Red Sox-M</h3>
+                        <p class="product-price">K215</p>
+                        <button class="add-to-cart" data-id="21" data-name="White Red Sox M" data-price="215" data-image="whiteredsox-m.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/redtexans-m.jpg" alt="Red Texans M"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Red Texans-M</h3>
+                        <p class="product-price">K210</p>
+                        <button class="add-to-cart" data-id="22" data-name="Red Texans M" data-price="210" data-image="redtexans-m.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/indians-xl.jpg" alt="Indians XL"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Red Texans-XL</h3>
+                        <p class="product-price">K225</p>
+                        <button class="add-to-cart" data-id="23" data-name="Indians XL" data-price="225" data-image="indians-xl.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pants & Jeans -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Pants & Jeans</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image"><img src="images/jean.jpg" alt="Classic Jean"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Classic Jean-XL</h3>
+                        <p class="product-price">K260</p>
+                        <button class="add-to-cart" data-id="24" data-name="Classic Jean" data-price="260" data-image="jean.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/black jean.jpg" alt="Black Jean"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Black Jean-L</h3>
+                        <p class="product-price">K255</p>
+                        <button class="add-to-cart" data-id="25" data-name="Black Jean" data-price="255" data-image="black jean.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/jam suit.jpg" alt="Jam Suit"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Jam Suit-XL</h3>
+                        <p class="product-price">K280</p>
+                        <button class="add-to-cart" data-id="26" data-name="Jam Suit" data-price="280" data-image="jam suit.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/brown jam suit.jpg" alt="Brown Jam Suit"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Brown Jam Suit-XL</h3>
+                        <p class="product-price">K285</p>
+                        <button class="add-to-cart" data-id="27" data-name="Brown Jam Suit" data-price="285" data-image="brown jam suit.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sandals & Slippers -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Sandals & Slippers</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image"><img src="images/sandals42.jpg" alt="Sandals Size 42"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sandals Size 42</h3>
+                        <p class="product-price">K120</p>
+                        <button class="add-to-cart" data-id="28" data-name="Sandals Size 42" data-price="120" data-image="sandals42.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/blacksandals32.jpg" alt="Black Sandals Size 32"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Black Sandals Size 32</h3>
+                        <p class="product-price">K110</p>
+                        <button class="add-to-cart" data-id="29" data-name="Black Sandals Size 32" data-price="110" data-image="blacksandals32.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/bigbaseslides.jpg" alt="Big Base Slides"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Big Base Slides-41</h3>
+                        <p class="product-price">K130</p>
+                        <button class="add-to-cart" data-id="30" data-name="Big Base Slides" data-price="130" data-image="bigbaseslides.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessories -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Accessories & Gadgets</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image"><img src="images/bluetooth headsets.jpeg" alt="Bluetooth Headsets"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bluetooth Headsets</h3>
+                        <p class="product-price">K280</p>
+                        <button class="add-to-cart" data-id="31" data-name="Bluetooth Headsets" data-price="280" data-image="bluetooth headsets.jpeg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/air pod.jpeg" alt="Air Pods"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Air Pods</h3>
+                        <p class="product-price">K290</p>
+                        <button class="add-to-cart" data-id="32" data-name="Air Pods" data-price="290" data-image="air pod.jpeg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/office combo gadget.png" alt="Office Combo Gadget"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Office Combo Gadget</h3>
+                        <p class="product-price">K4800</p>
+                        <button class="add-to-cart" data-id="33" data-name="Office Combo Gadget" data-price="4800" data-image="office combo gadget.png">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fashion Brands -->
+    <section class="featured">
+        <div class="container">
+            <h2 class="section-title">Designer Collections</h2>
+            <div class="products">
+                <div class="product-card">
+                    <div class="product-image"><img src="images/Balmain.jpg" alt="Balmain Collection"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Balmain Collection</h3>
+                        <p class="product-price">K290</p>
+                        <button class="add-to-cart" data-id="34" data-name="Balmain Collection" data-price="290" data-image="Balmain.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/bikini.jpg" alt="Bikini Set"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Bikini Set</h3>
+                        <p class="product-price">K200</p>
+                        <button class="add-to-cart" data-id="35" data-name="Bikini Set" data-price="200" data-image="bikini.jpg">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><img src="images/blackjack.jpg" alt="Black Jack Design"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Black Jack Design</h3>
+                        <p class="product-price">K250</p>
+                        <button class="add-to-cart" data-id="36" data-name="Black Jack Design" data-price="250" data-image="blackjack.jpg">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -176,7 +425,7 @@
                 <div class="footer-column">
                     <h3>Customer Service</h3>
                     <ul>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="shipping and returns.html">Shipping & Returns</a></li>
                     </ul>
                 </div>
@@ -204,10 +453,10 @@
             <!-- Cart items will be added here dynamically -->
         </div>
         <div class="cart-total">
-            Total: $<span class="total-amount">0.00</span>
+            Total: K<span class="total-amount">0.00</span>
         </div>
         
-        <button id="checkout-button">Proceed to Checkout</botton>
+        <button id="checkout-button">Proceed to Checkout</button>
     </div>
     <div class="overlay"></div>
     <script src="script.js"></script>

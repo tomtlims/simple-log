@@ -7,11 +7,47 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css" />
 </head>
 <body>
-  <div class="container header-container">
-            <a href="#" class="logo">TLIMS <span>MERCANTILE</span></a>
-            
- 
-<div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">TLIMS <span>MERCANTILE</span></a>
+
+            <nav class="main-nav" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="allproducts.html">Collections</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="shipping and returns.html">Shipping</a></li>
+                    <li><a href="login.html">Profile</a></li>
+                </ul>
+            </nav>
+
+
+                <button class="cart-icon" aria-label="Open cart">
+                    <svg width="24" height="24">
+                      <image href="images/cart.png" width="20" height="20"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="Toggle menu" onclick="myFunction()">
+                    <span class="hamburger">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="myLinks" class="mobile-nav" aria-hidden="true">
+            <a href="index.html">Home</a>
+            <a href="allproducts.html">Collections</a>
+            <a href="about.html">About</a>
+            <a href="shipping and returns.html">Shipping & Returns</a>
+            <a href="login.html">Profile</a>
+        </div>
+    </header>
+
+    <!-- <img class="background-image" src="images/login-background.jpg" alt="Login Background" /> -->
+
+<div class="login-container">
     <div class="form-toggle">
       <button id="loginToggle" class="active">Login</button>
       <button id="registerToggle">Register</button>
@@ -45,6 +81,7 @@
   </div>
 </div>
 
+  <div class="overlay"></div>
   <script src="script.js"></script>
 </body>
 </html>

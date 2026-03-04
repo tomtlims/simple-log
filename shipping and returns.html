@@ -10,23 +10,40 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">TLIMS  <span>MERCANTILE</span></a>
-            
-            <div class="search-container">
-  <input type="search" id="search-input" placeholder="Search products...">
-  <button id="search-button">Search</button>
-  <ul id="search-results"></ul>
-</div>
+            <a href="index.html" class="logo">TLIMS <span>MERCANTILE</span></a>
 
-            <nav>
+            <nav class="main-nav" aria-label="Main Navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="allproducts.html">Collections</a></li>                
+                    <li><a href="allproducts.html">Collections</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="shipping and returns.html">Shipping</a></li>
                     <li><a href="login.html">Profile</a></li>
                 </ul>
             </nav>
-        </header>
+
+
+                <button class="cart-icon" aria-label="Open cart">
+                    <svg width="24" height="24">
+                      <image href="images/cart.png" width="20" height="20"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="Toggle menu" onclick="myFunction()">
+                    <span class="hamburger">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="myLinks" class="mobile-nav" aria-hidden="true">
+            <a href="index.html">Home</a>
+            <a href="allproducts.html">Collections</a>
+            <a href="about.html">About</a>
+            <a href="shipping and returns.html">Shipping & Returns</a>
+            <a href="login.html">Profile</a>
+        </div>
+    </header>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -44,7 +61,7 @@
             <ul>
                 <li><a href="#shipping" class="active">Shipping Information</a></li>
                 <li><a href="#delivery">Delivery Options</a></li>
-                <li><a href="#international">International Shipping</a></li>
+                <li><a href="#national">National Shipping (Zambia)</a></li>
                 <li><a href="#returns">Return Policy</a></li>
                 <li><a href="#exchanges">Exchanges</a></li>
                 <li><a href="#refunds">Refunds</a></li>
@@ -81,47 +98,77 @@
                         <tr>
                             <th>Service</th>
                             <th>Delivery Time</th>
-                            <th>Price</th>
+                            <th>Price (ZMW)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>Standard Shipping</td>
                             <td>3-5 business days</td>
-                            <td>$4.99</td>
+                            <td>K50.00</td>
                         </tr>
                         <tr>
                             <td>Express Shipping</td>
                             <td>2-3 business days</td>
-                            <td>$9.99</td>
+                            <td>K9</td>
                         </tr>
                         <tr>
                             <td>Next Day Delivery</td>
                             <td>1 business day</td>
-                            <td>$19.99</td>
+                            <td>K120.</td>
                         </tr>
                         <tr>
                             <td>Free Shipping</td>
                             <td>5-7 business days</td>
-                            <td>Free on orders over $50</td>
+                            <td>Free on orders over K5000</td>
                         </tr>
                     </tbody>
                 </table>
             </section>
 
-            <!-- International Shipping -->
-            <section id="international" class="policy-section">
-                <h2><i class="fas fa-globe-americas"></i> International Shipping</h2>
-                <p>We ship to over 50 countries worldwide. International delivery times vary based on destination:</p>
+            <!-- National Shipping -->
+            <section id="national" class="policy-section">
+                <h2><i class="fas fa-map-marker-alt"></i> National Shipping — Zambia</h2>
+                <p>We deliver across Zambia. To make delivery clearer we use delivery zones and service types. Choose the option that suits you during checkout.</p>
                 
+                <h3>Delivery Zones</h3>
                 <ul>
-                    <li>Canada: 5-10 business days</li>
-                    <li>Europe: 7-14 business days</li>
-                    <li>Australia: 10-15 business days</li>
-                    <li>Asia: 10-18 business days</li>
+                    <li><strong>Lusaka (Urban)</strong> — fast local delivery within main Lusaka areas.</li>
+                    <li><strong>Copperbelt</strong> — major towns like Ndola, Kitwe; slightly longer transit.</li>
+                    <li><strong>Other Provinces</strong> — Central, Eastern, Southern, Northern, Muchinga, Luapula, Western.</li>
+                    <li><strong>Remote Areas</strong> — locations with limited road access; expect longer transit.</li>
                 </ul>
-                
-                <p>Please note that international orders may be subject to customs fees, import duties, and taxes which are the responsibility of the recipient.</p>
+
+                <h3>Service Types & Example Fees</h3>
+                <p>Fees depend on the number of items (quantity tiers), the chosen service, and the delivery zone. Example business rules we apply (shown in checkout):</p>
+                <table class="shipping-table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Delivery Time (typical)</th>
+                            <th>Example Fee (single parcel)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Standard (Road)</td>
+                            <td>Lusaka: 1-2 business days; Other provinces: 3-5 business days</td>
+                            <td>K150 (up to 5 items) — discounts for larger quantities shown at checkout</td>
+                        </tr>
+                        <tr>
+                            <td>Express</td>
+                            <td>Lusaka/Copperbelt: same day / next day; Other: 1-2 business days</td>
+                            <td>Standard fee + K100 (surcharge)</td>
+                        </tr>
+                        <tr>
+                            <td>Store Pickup</td>
+                            <td>Available immediately after order is ready for collection</td>
+                            <td>Free</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Note: remote areas may have higher delivery fees, and our checkout allows you to pick a delivery zone so the correct fee is shown before payment.</p>
             </section>
 
             <!-- Return Policy -->
@@ -256,3 +303,5 @@
             </div>
         </div>
     </footer>
+    <div class="overlay"></div>
+    <script src="script.js"></script>

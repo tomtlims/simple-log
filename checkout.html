@@ -7,17 +7,206 @@
    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">TLIMS <span>MERCANTILE</span></a>
+
+            <nav class="main-nav" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="allproducts.html">Collections</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="shipping and returns.html">Shipping</a></li>
+                    <li><a href="login.html">Profile</a></li>
+                </ul>
+            </nav>
+
+
+                <button class="cart-icon" aria-label="Open cart">
+                    <svg width="24" height="24">
+                      <image href="images/cart.png" width="20" height="20"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="Toggle menu" onclick="myFunction()">
+                    <span class="hamburger">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="myLinks" class="mobile-nav" aria-hidden="true">
+            <a href="index.html">Home</a>
+            <a href="allproducts.html">Collections</a>
+            <a href="about.html">About</a>
+            <a href="shipping and returns.html">Shipping & Returns</a>
+            <a href="login.html">Profile</a>
+        </div>
+    </header>
     <div class="checkout">
-<h2>Checkout</h2>
-<form onsubmit="event.preventDefault(); alert('Order placed! Make payments on the netx page');">
-<input type="text" placeholder="Full Name" required><br><br>
-<input type="email" placeholder="Email" required><br><br>
-<input type="text" placeholder="Shipping Address" required><br><br>
+        <div class="container">
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h2>Shipping Details</h2>
+                    <form id="checkout-form" novalidate>
+                        <div class="form-group">
+                            <label for="fullName">Full name</label>
+                            <input id="fullName" name="fullName" type="text" placeholder="Tomtlims Chinkumbi" required>
+                        </div>
 
-<a href="PAYMENT.html" class="btn">Place Order</a>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                        </div>
 
-</form>
+                        <div class="form-group">
+                            <label for="address">Shipping address</label>
+                            <input id="address" name="address" type="text" placeholder="123 Main St, City, Province" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Delivery notes (optional)</label>
+                            <textarea id="notes" name="notes" placeholder="Leave at doorstep, ring bell, etc."></textarea>
+                        </div>
+
+                        <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
+                            <button type="submit" id="place-order" class="place-order-btn">Place Order</button>
+                            <button type="button" onclick="window.location.href='index.html'" class="btn" style="background:#ddd;color:#222222">Continue Shopping</button>
+                        </div>
+                    </form>
+                </div>
+
+                <aside class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="summary-items">
+                        <p style="color:#666">No items in cart</p>
+                    </div>
+
+                    <div style="margin-top:12px;padding:8px 0;border-top:1px solid #eee">
+                        <strong>Shipping Options</strong>
+                        <div style="margin-top:8px">
+                            <label><input type="radio" name="shippingType" value="standard" checked> Standard (Road)</label><br>
+                            <label><input type="radio" name="shippingType" value="express"> Express (Faster)</label><br>
+                            <label><input type="radio" name="shippingType" value="pickup"> Store Pickup (Free)</label>
+                        </div>
+
+                        <div style="margin-top:8px">
+                            <label for="shippingZone"><strong>Delivery Zone</strong></label>
+                            <select id="shippingZone" style="width:100%;padding:8px;margin-top:6px;border-radius:6px;border:1px solid #ddd">
+                                <option value="lusaka">Lusaka (Urban)</option>
+                                <option value="copperbelt">Copperbelt</option>
+                                <option value="other">Other Provinces</option>
+                                <option value="remote">Remote Areas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="summary-line">Subtotal: K<span id="summary-subtotal">0.00</span></div>
+                    <div class="summary-line">Shipping: K<span id="summary-shipping">0.00</span></div>
+                    <div class="summary-total">Total: K<span id="summary-total">0.00</span></div>
+                </aside>
+            </div>
+        </div>
     </div>
+
+<script>
+    // Client-side validation and summary population
+    (function(){
+        const form = document.getElementById('checkout-form');
+        const summaryItems = document.getElementById('summary-items');
+        const summarySubtotalEl = document.getElementById('summary-subtotal');
+        const summaryShippingEl = document.getElementById('summary-shipping');
+        const summaryTotalEl = document.getElementById('summary-total');
+
+        // shipping controls
+        const shippingTypeEls = document.getElementsByName('shippingType');
+        const shippingZoneEl = document.getElementById('shippingZone');
+
+        // populate order summary from localStorage cart
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function computeShippingFee(qty, type, zone) {
+            // Base fee by quantity (business rule):
+            // qty <=5 => K150, qty 6-9 => K120, qty >=10 => K100
+            let base = 150;
+            if (qty >= 10) base = 80;
+            else if (qty >= 6) base = 100;
+
+            // Zone multipliers for Zambian routes
+            const zoneMultipliers = {
+                'lusaka': 1.0,
+                'copperbelt': 1.1,
+                'other': 1.2,
+                'remote': 1.5
+            };
+            const zm = zoneMultipliers[zone] || 1.2;
+
+            // Type surcharge
+            let surcharge = 0;
+            if (type === 'express') surcharge = 100; // express flat surcharge
+            if (type === 'pickup') return 0; // pickup is free
+
+            const fee = Math.round((base * zm) + surcharge);
+            return fee;
+        }
+
+        function getSelectedShippingType() {
+            for (const el of shippingTypeEls) if (el.checked) return el.value;
+            return 'standard';
+        }
+
+        function updateSummary() {
+            if (!cart || cart.length === 0) {
+                summaryItems.innerHTML = '<p style="color:#666">Your cart is empty.</p>';
+                document.getElementById('place-order').disabled = true;
+                summarySubtotalEl.textContent = '0.00';
+                summaryShippingEl.textContent = '0.00';
+                summaryTotalEl.textContent = '0.00';
+                return;
+            }
+
+            // render items
+            summaryItems.innerHTML = '';
+            let subtotal = 0;
+            let totalQty = 0;
+            cart.forEach(item => {
+                const itemRow = document.createElement('div');
+                itemRow.className = 'summary-item';
+                itemRow.innerHTML = `<div>${item.name} x ${item.quantity}</div><div>K${(item.price*item.quantity).toFixed(2)}</div>`;
+                summaryItems.appendChild(itemRow);
+                subtotal += item.price * item.quantity;
+                totalQty += Number(item.quantity) || 0;
+            });
+
+            const shippingType = getSelectedShippingType();
+            const zone = shippingZoneEl ? shippingZoneEl.value : 'other';
+            const shippingFee = computeShippingFee(totalQty, shippingType, zone);
+
+            summarySubtotalEl.textContent = subtotal.toFixed(2);
+            summaryShippingEl.textContent = shippingFee.toFixed(2);
+            summaryTotalEl.textContent = (subtotal + shippingFee).toFixed(2);
+            document.getElementById('place-order').disabled = false;
+        }
+
+        // attach listeners
+        if (shippingZoneEl) shippingZoneEl.addEventListener('change', updateSummary);
+        shippingTypeEls.forEach(el => el.addEventListener('change', updateSummary));
+
+        // initial render
+        updateSummary();
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            if (form.checkValidity()) {
+                // it will replace with real submission when database is created
+                window.location.href = 'PAYMENT.html';
+            } else {
+                form.reportValidity();
+            }
+        });
+    })();
+</script>
  <!-- Footer -->
     <footer>
         <div class="container">
@@ -48,6 +237,7 @@
             </div>
         </div>
     </footer>
+    <div class="overlay"></div>
     <script src="script.js"></script>
            
 </body>

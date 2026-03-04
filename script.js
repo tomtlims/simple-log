@@ -8,8 +8,9 @@
             const cartItemsContainer = document.querySelector('.cart-items');
             const cartCount = document.querySelector('.cart-count');
             const totalAmount = document.querySelector('.total-amount');
-            
-            let cart = [];
+            const proceedButton = document.getElementById('checkout-button') || document.querySelector('.cart-sidebar .btn');
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
             
             // Open cart
             cartIcon.addEventListener('click', () => {
@@ -65,66 +66,83 @@
             
             // Update cart
             function updateCart() {
-                // Update cart items
+                // Render cart items
                 cartItemsContainer.innerHTML = '';
-                
+
                 let total = 0;
                 let count = 0;
-                
-                cart.forEach(item => {
-                    total += item.price * item.quantity;
-                    count += item.quantity;
-                    
-                    const cartItemElement = document.createElement('div');
-                    cartItemElement.classList.add('cart-item');
-                    cartItemElement.innerHTML = `
-                        <div class="cart-item-image">
-                            <img src="${item.image}" alt="${item.name}">
-                        </div>
-                        <div class="cart-item-details">
-                            <h4 class="cart-item-title">${item.name}</h4>
-                            <p class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</p>
-                            <div>
-                                <button class="decrease-quantity" data-id="${item.id}">-</button>
-                                <span class="quantity">${item.quantity}</span>
-                                <button class="increase-quantity" data-id="${item.id}">+</button>
-                            </div>
-                            <p class="cart-item-remove" data-id="K{item.id}">Remove</p>
+
+                if (!cart || cart.length === 0) {
+                    cartItemsContainer.innerHTML = `
+                        <div class="empty-cart" style="padding:20px; text-align:center; color:#666;">
+                            <p style="font-weight:600; margin:0 0 8px 0;">Your cart is empty</p>
+                            <p style="margin:0;">Add items to see them here.</p>
                         </div>
                     `;
-                    
-                    cartItemsContainer.appendChild(cartItemElement);
-                });
-                
+                } else {
+                    cart.forEach(item => {
+                        total += item.price * item.quantity;
+                        count += item.quantity;
+
+                        const cartItemElement = document.createElement('div');
+                        cartItemElement.classList.add('cart-item');
+                        cartItemElement.innerHTML = `
+                            <div class="cart-item-image">
+                                <img src="${item.image}" alt="${item.name}">
+                            </div>
+                            <div class="cart-item-details">
+                                <h4 class="cart-item-title">${item.name}</h4>
+                                <p class="cart-item-price">K${(item.price * item.quantity).toFixed(2)}</p>
+                                <div>
+                                    <button class="decrease-quantity" data-id="${item.id}">-</button>
+                                    <span class="quantity">${item.quantity}</span>
+                                    <button class="increase-quantity" data-id="${item.id}">+</button>
+                                </div>
+                                <p class="cart-item-remove" data-id="${item.id}">Remove</p>
+                            </div>
+                        `;
+
+                        cartItemsContainer.appendChild(cartItemElement);
+                    });
+                }
+
                 // Update total and count
                 totalAmount.textContent = total.toFixed(2);
                 cartCount.textContent = count;
-                
-                // Add event listeners to quantity buttons
+
+                // Show or hide proceed button based on cart content
+                if (proceedButton) {
+                    proceedButton.style.display = (cart && cart.length > 0) ? '' : 'none';
+                }
+
+                // Add event listeners to quantity buttons (only present when items exist)
                 document.querySelectorAll('.decrease-quantity').forEach(button => {
                     button.addEventListener('click', () => {
                         const id = button.getAttribute('data-id');
                         const item = cart.find(item => item.id === id);
-                        
+
+                        if (!item) return;
+
                         if (item.quantity > 1) {
                             item.quantity -= 1;
                         } else {
                             cart = cart.filter(item => item.id !== id);
                         }
-                        
+
                         updateCart();
                     });
                 });
-                
+
                 document.querySelectorAll('.increase-quantity').forEach(button => {
                     button.addEventListener('click', () => {
                         const id = button.getAttribute('data-id');
                         const item = cart.find(item => item.id === id);
+                        if (!item) return;
                         item.quantity += 1;
                         updateCart();
                     });
                 });
-                
+
                 document.querySelectorAll('.cart-item-remove').forEach(button => {
                     button.addEventListener('click', () => {
                         const id = button.getAttribute('data-id');
@@ -132,42 +150,44 @@
                         updateCart();
                     });
                 });
+
+                // Persist cart
+                localStorage.setItem('cart', JSON.stringify(cart));
             }
             
-            // Get the cart items and procced to checkout
-            const cartItems = document.querySelectorAll(' .cart-item');
-            const checkoutButton = document.getElementById( 'checkout-button' );
+            // Render initial cart and hook checkout behaviour
+            updateCart();
 
-            // Checkout button
-            
-            document.querySelector('.checkout-button').addEventListener('click', (event) => {
-                event.preventDefault(); 
+            if (proceedButton) {
+                proceedButton.addEventListener('click', (event) => {
+                    event.preventDefault();
 
-                if (cart.length == 0) {
-                    // display an empty body page 
-                    document.body.innerHTML = `
-                    <div style="text-align: center; margin-top: 100px; font-family: Arial, Helvetica, sans-serif;">
-        <h2>Your cart is empty</h2>
-        <p>Please add some items in your cart before checking out</p>
-        <button id="BackToShop" style="
-        background: rgb(255, 61, 3);
-        color: azure;
-        padding: 10px 20px;
-        cursor: pointer;
-        margin-top: 15px;
-        font-size: 16px;border-radius: 10px;
-        ">Back To Shop</button>
-    </div>
-    `;
+                    if (cart.length == 0) {
+                        // display an empty body page
+                        document.body.innerHTML = `
+                        <div style="text-align: center; margin-top: 100px; font-family: Arial, Helvetica, sans-serif;">
+            <h2>Your cart is empty</h2>
+            <p>Please add some items in your cart before checking out</p>
+            <button id="BackToShop" style="
+            background: rgb(255, 61, 3);
+            color: azure;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;border-radius: 10px;
+            ">Back To Shop</button>
+        </div>
+        `;
 
-document.getElementById('BackToShop').addEventListener('click',() =>{
-    window.location.href = 'index.html';
-});
-                  
-                } else {
-                    window.location.href = 'checkout.html'
-                }
-            });
+                        document.getElementById('BackToShop').addEventListener('click',() =>{
+                            window.location.href = 'index.html';
+                        });
+
+                    } else {
+                        window.location.href = 'checkout.html'
+                    }
+                });
+            }
         });
 
 // Simple animation for stats counting
@@ -232,4 +252,12 @@ registerBtn.addEventListener('click', () => {
     function processPayment(method) {
       alert("Payment processed successfully with " + method + " ");
     };
-   
+// Responsive navbar toggle
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}

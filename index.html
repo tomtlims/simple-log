@@ -3,46 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TLIMS MERCANTILE - Premium Clothing</title>
+    <title>TLIMS MERCANTILE - Premium Clothing + More</title>
    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">TLIMS <span>MERCANTILE</span></a>
-            
-            <div class="search-container">
-  <input type="search" id="search-input" placeholder="Search products...">
-  <button id="search-button">Search</button>
-  <ul id="search-results"></ul>
-</div>
+            <a href="index.html" class="logo">TLIMS <span>MERCANTILE</span></a>
 
-            <nav>
+            <nav class="main-nav" aria-label="Main Navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="allproducts.html">Collections</a></li>                
+                    <li><a href="allproducts.html">Collections</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="shipping and returns.html">Shipping</a></li>
                     <li><a href="login.html">Profile</a></li>
                 </ul>
             </nav>
-          
-            <div class="cart-icon">
-                <svg width="24" height="24">
-  <image href="cart.png" width="24" height="24"/>
-</svg>
 
-                <span class="cart-count">0</span>
+
+                <button class="cart-icon" aria-label="Open cart">
+                    <svg width="24" height="24">
+                      <image href="images/cart.png" width="20" height="20"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="Toggle menu" onclick="myFunction()">
+                    <span class="hamburger">☰</span>
+                </button>
             </div>
+        </div>
+
+        <div id="myLinks" class="mobile-nav" aria-hidden="true">
+            <a href="index.html">Home</a>
+            <a href="allproducts.html">Collections</a>
+            <a href="about.html">About</a>
+            <a href="shipping and returns.html">Shipping & Returns</a>
+            <a href="login.html">Profile</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Elevate Your Style</h1>
-            <p>Discover premium quality clothing that combines comfort, style, and sustainability</p>
-            <a href="allproducts.html" class="btn">Shop Now</a>
+    <section class="hero-first" aria-label="Main hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="promo">New Arrival • Limited Drop</div>
+                    <h1>Enhance Your Everyday — Quality Apparel & Essentials</h1>
+                    <p>Shop curated styles built for comfort and durability. Free shipping on orders over K5000 — secure checkout and easy returns.</p>
+
+                    <form action="allproducts.html" method="get" role="search" class="hero-search-form">
+                        <input name="q" type="search" placeholder="Search products, e.g., 'sneakers' or 'tee'" aria-label="Search products">
+                        <button class="btn" type="submit">Search</button>
+                    </form>
+
+                    <div class="hero-cta-buttons">
+                        <a href="allproducts.html" class="btn btn-primary">Shop Collections</a>
+                        <a href="allproducts.html#best-sellers" class="btn-secondary">Best Sellers</a>
+                    </div>
+
+                    <ul class="hero-trust-list">
+                        <li><strong>Free</strong> shipping</li>
+                        <li><strong>Secure</strong> payments</li>
+                        <li><strong>Easy</strong> returns</li>
+                    </ul>
+                </div>
+
+                <div class="hero-right">
+                    <div class="hero-image-grid">
+                        <div class="hero-image-item">
+                            <img src="images/t-shirt.jpeg" alt="Classic White Tee">
+                            <div class="hero-image-label">Classic Tee</div>
+                        </div>
+                        <div class="hero-image-item">
+                            <img src="images/adida sneakers.jpg" alt="Adidas Sneakers">
+                            <div class="hero-image-label">Sneakers</div>
+                        </div>
+                        <div class="hero-image-item">
+                            <img src="images/savage black.jpeg" alt="Savage Black T-shirt" class="small">
+                            <div class="hero-image-label small trending">Trending</div>
+                        </div>
+                        <div class="hero-image-item">
+                            <img src="images/chicagobulls-xl.jpg" alt="Chicago Bulls Tee" class="small">
+                            <div class="hero-image-label small">Limited</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-bottom-buttons">
+                        <a href="allproducts.html" class="btn-offer">Limited Offer</a>
+                        <a href="allproducts.html#new" class="btn-view">View New</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -54,7 +108,7 @@
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="t-shirt.jpeg" alt="Classic White Tee">
+                        <img src="images/t-shirt.jpeg" alt="Classic White Tee">
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Classic White Tee</h3>
@@ -66,10 +120,10 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="long sleeved.jpeg" alt="Long Sleeve Shirt">
+                        <img src="images/long sleeved.jpeg" alt="Long Sleeve Shirt">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Long Sleeve Shirt</h3>
+                        <h3 class="product-title">Long Sleeve Shirt-M</h3>
                         <p class="product-price">90.99ZMW</p>
                         <button class="add-to-cart" data-id="2" data-name="Long Sleeve shirt" data-price="90.99" data-image="long sleeved.jpeg">Add to Cart</button>
                     </div>
@@ -78,7 +132,7 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="office combo gadget.png" alt="Office Combo Gadget">
+                        <img src="images/office combo gadget.png" alt="Office Combo Gadget">
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Office Combo Gadget</h3>
@@ -90,10 +144,10 @@
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="savage black.jpeg" alt="Savage Black-Tshirt ">
+                        <img src="images/savage black.jpeg" alt="Savage Black-Tshirt ">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-title">Savage Black-Tshirt</h3>
+                        <h3 class="product-title">Savage Black-Tshirt-XL</h3>
                         <p class="product-price">200ZMW</p>
                         <button class="add-to-cart" data-id="4" data-name="Savage Black-Tshirt" data-price="200ZMW" data-image="savage black">Add to Cart</button>
                     </div>
@@ -101,14 +155,26 @@
                 <!-- Product 5 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="chicagobulls-xl.jpg" alt="Chicago Bulls- XL">
+                        <img src="images/chicagobulls-xl.jpg" alt="Chicago Bulls- XL">
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">Chicago Bulls- XL</h3>
                         <p class="product-price">200ZMW</p>
-                        <button class="add-to-cart" data-id="4" data-name="Chicago Bulls- XL" data-price="200ZMW" data-image="chicagobulls-xl">Add to Cart</button>
+                        <button class="add-to-cart" data-id="5" data-name="Chicago Bulls- XL" data-price="200ZMW" data-image="chicagobulls-xl">Add to Cart</button>
                     </div>
                 </div>
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/adida sneakers.jpg" alt="Adidas Sneakers">   
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Adidas Sneakers-42</h3>
+                        <p class="product-price">300ZMW</p>
+                        <button class="add-to-cart" data-id="6" data-name="Adidas Sneakers" data-price="300" data-image="adidas sneakers.jpg">Add to Cart</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -133,7 +199,7 @@
                 <div class="footer-column">
                     <h3>Customer Service</h3>
                     <ul>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="shipping and returns.html">Shipping & Returns</a></li>
                     </ul>
                 </div>
@@ -164,7 +230,7 @@
             Total: K<span class="total-amount">0.00</span>
         </div>
         
-        <a href="checkout.html" class="btn">Proceed to Checkout</a>
+        <a id="checkout-button" href="checkout.html" class="btn checkout-button">Proceed to Checkout</a>
     </div>
     <div class="overlay"></div>
     <script src="script.js"></script>

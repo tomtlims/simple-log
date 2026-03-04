@@ -10,19 +10,39 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
-            <header>
         <div class="container header-container">
-            <a href="#" class="logo">TLIMS <span>MERCANTILE</span></a>
-            <nav>
+            <a href="index.html" class="logo">TLIMS <span>MERCANTILE</span></a>
+
+            <nav class="main-nav" aria-label="Main Navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="allproducts.html">Collections</a></li>                
+                    <li><a href="allproducts.html">Collections</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="shipping and returns.html">Shipping</a></li>
                     <li><a href="login.html">Profile</a></li>
                 </ul>
             </nav>
-            </nav>
+
+
+                <button class="cart-icon" aria-label="Open cart">
+                    <svg width="24" height="24">
+                      <image href="images/cart.png" width="20" height="20"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="Toggle menu" onclick="myFunction()">
+                    <span class="hamburger">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="myLinks" class="mobile-nav" aria-hidden="true">
+            <a href="index.html">Home</a>
+            <a href="allproducts.html">Collections</a>
+            <a href="about.html">About</a>
+            <a href="shipping and returns.html">Shipping & Returns</a>
+            <a href="login.html">Profile</a>
         </div>
     </header>
 
@@ -43,7 +63,7 @@
             <p>At TLIMS MERCANTILE, we're more than just a shopping destination - we're a community of fashion enthusiasts, trendsetters, and everyday people who believe that style should be accessible to all.</p>
         </div>
         <div class="about-image">
-            <img src="shopping.png.jpg" alt="Our store">
+            <img src="images/shopping.png.jpg" alt="Our store">
         </div>
     </section>
 
@@ -51,7 +71,7 @@
     <section class="stats">
         <div class="container stats-container">
             <div class="stat-item">
-                <div class="stat-number">50K+</div>
+                <div class="stat-number">28K+</div>
                 <div class="stat-label">Happy Customers</div>
             </div>
             <div class="stat-item">
@@ -59,11 +79,11 @@
                 <div class="stat-label">Products Sold</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">20+</div>
+                <div class="stat-number">14+</div>
                 <div class="stat-label">Brands</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">10</div>
+                <div class="stat-number">5</div>
                 <div class="stat-label">Province</div>
             </div>
         </div>
@@ -74,7 +94,7 @@
         <h2>Meet Our Team</h2>
         <div class="team-container">
             <div class="team-member">
-                <img src="CHINKUMBI TOM.png" alt="Team Member">
+                <img src="images/CHINKUMBI TOM.png" alt="Team Member">
                 <div class="member-info">
                     <h3>Chinkumbi Tom</h3>
                     <p>CEO & Founder</p>
@@ -85,7 +105,7 @@
                 </div>
             </div>
             <div class="team-member">
-                <img src="Memory Tembo.jpg" alt="Team Member">
+                <img src="images/Memory Tembo.jpg" alt="Team Member">
                 <div class="member-info">
                     <h3>Memory Tembo</h3>
                     <p>Head of Design</p>
@@ -96,7 +116,7 @@
                 </div>
             </div>
             <div class="team-member">
-                <img src="Steven.jpg" alt="Team Member">
+                <img src="images/Steven.jpg" alt="Team Member">
                 <div class="member-info">
                     <h3>Steven Musonda</h3>
                     <p>Marketing Director</p>
@@ -182,5 +202,7 @@
             </div>
         </div>
     </footer>
+    <div class="overlay"></div>
+    <script src="script.js"></script>
 </body>
 </html>

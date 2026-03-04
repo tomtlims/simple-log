@@ -7,6 +7,43 @@
    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body class="payment">
+  <!-- Header -->
+  <header>
+      <div class="container header-container">
+          <a href="index.html" class="logo">TLIMS <span>MERCANTILE</span></a>
+
+          <nav class="main-nav" aria-label="Main Navigation">
+              <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="allproducts.html">Collections</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="shipping and returns.html">Shipping</a></li>
+                  <li><a href="login.html">Profile</a></li>
+              </ul>
+          </nav>
+
+
+              <button class="cart-icon" aria-label="Open cart">
+                  <svg width="24" height="24">
+                    <image href="images/cart.png" width="20" height="20"/>
+                  </svg>
+                  <span class="cart-count">0</span>
+              </button>
+
+              <button class="menu-toggle" aria-label="Toggle menu" onclick="myFunction()">
+                  <span class="hamburger">☰</span>
+              </button>
+          </div>
+      </div>
+
+      <div id="myLinks" class="mobile-nav" aria-hidden="true">
+          <a href="index.html">Home</a>
+          <a href="allproducts.html">Collections</a>
+          <a href="about.html">About</a>
+          <a href="shipping and returns.html">Shipping & Returns</a>
+          <a href="login.html">Profile</a>
+      </div>
+  </header>
   <div class="tabcontainer">
     <h1 class="h1">Choose Payment Method</h1>
 
@@ -19,27 +56,27 @@
     <!-- Airtel Money -->
     <div id="airtel" class="form-section active">
       <label for="airtel-number">Airtel Phone Number</label>
-      <input type="tel" id="airtel-number" placeholder="e.g. 097XXXXXXX">
+      <input type="tel" id="airtel-number" placeholder="e.g. 097XXXXXXX" required>
       <button class="butn" onclick="processPayment('Airtel Money')">Pay with Airtel</button>
     </div>
 
     <!-- MTN Mobile Money -->
     <div id="mtn" class="form-section">
       <label for="mtn-number">MTN Phone Number</label>
-      <input type="tel" id="mtn-number" placeholder="e.g. 096XXXXXXX">
+      <input type="tel" id="mtn-number" placeholder="e.g. 096XXXXXXX" required>
       <button class="butn" onclick="processPayment('MTN Mobile Money')">Pay with MTN</button>
     </div>
 
     <!-- Credit Card -->
     <div id="card" class="form-section">
       <label for="card-number">Card Number</label>
-      <input type="text" id="card-number" maxlength="16" placeholder="1234 5678 9012 3456">
+      <input type="text" id="card-number" maxlength="16" placeholder="1234 5678 9012 3456" required>
 
       <label for="expiry">Expiry Date</label>
-      <input type="text" id="expiry" placeholder="MM/YY">
+      <input type="text" id="expiry" placeholder="MM/YY" required>
 
       <label for="cvv">CVV</label>
-      <input type="password" id="cvv" maxlength="4" placeholder="123">
+      <input type="password" id="cvv" maxlength="4" placeholder="123" required>
 
       <button class="butn" onclick="processPayment('Credit Card')">Pay with Card</button>
     </div>
@@ -60,11 +97,52 @@
     });
 
     // payment processing
-    function processPayment(method) {
-      alert("Payment processed successfully with " + method + "");
+    async function processPayment(method) {
+      if (method === 'Credit Card') {
+        // Create checkout session on the server and redirect to Stripe Checkout
+        try {
+          const cart = JSON.parse(localStorage.getItem('cart')) || [];
+          if (!cart || cart.length === 0) return alert('Your cart is empty.');
+
+          // Map cart items to a simple payload the server expects
+          const items = cart.map(i => ({ name: i.name, price: Number(i.price) || 0, quantity: Number(i.quantity) || 1 }));
+
+          const res = await fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items })
+          });
+
+          const data = await res.json();
+          if (data && data.id) {
+            // Redirect to Stripe Checkout using the publishable key (server should return session id only)
+            const stripe = Stripe(window.STRIPE_PUBLISHABLE_KEY || 'pk_test_replace');
+            await stripe.redirectToCheckout({ sessionId: data.id });
+          } else {
+            alert('Failed creating checkout session. See server logs.');
+          }
+        } catch (err) {
+          console.error(err);
+          alert('Error creating checkout session: ' + err.message);
+        }
+        return;
+      }
+
+      // Mobile money (Airtel / MTN) - placeholder behaviour
+      if (method === 'Airtel Money' || method === 'MTN Mobile Money') {
+        // For real mobile money integration you must register as a merchant with the provider
+        // and implement server-side callbacks. Here we simulate a successful request and
+        // instruct the user on next steps.
+        const phone = method === 'Airtel Money' ? document.getElementById('airtel-number').value : document.getElementById('mtn-number').value;
+        if (!phone) return alert('Please enter your phone number.');
+        // Optionally redirect to a local success page
+        window.location.href = 'success.html';
+        return;
+      }
     };
    
-  </script>
-  <script src="script.js"></script>
-</body>
-</html>
+   </script>
+   <div class="overlay"></div>
+   <script src="script.js"></script>
+ </body>
+ </html>
